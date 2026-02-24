@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohan Prasad N · Full‑Stack Developer</title>
+    <!-- SEO & ATS friendly meta -->
+    <meta
+      name="description"
+      content="Mohan Prasad N – Computer Science student skilled in Full‑Stack development (Node.js, Express, MongoDB), DSA, C/C++, Java, and Oracle AI. Built a Campus Fault Reporting System. Open for internships."
+    />
+    <meta
+      name="keywords"
+      content="Mohan Prasad N, Full Stack Developer, Portfolio, Node.js, Express, MongoDB, DSA, Java, Oracle AI, Campus Fault Reporting"
+    />
+    <meta name="author" content="Mohan Prasad N" />
+    <!-- Modern typography (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lightweight icons (Font Awesome) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* ----- CSS RESET & THEME VARIABLES (Cosmic Balance) ----- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Dark theme (cosmic) */
+      :root {
+        --bg-dark: #0c0c1c;
+        --bg-deep: #14132b;
+        --glass-bg: rgba(20, 18, 40, 0.4);
+        --glass-border: rgba(100, 150, 255, 0.3);
+        --premium: #5f9eff;
+        --premium-glow: 0 0 15px rgba(95, 158, 255, 0.6);
+        --gold: #ffbc6c;
+        --gold-glow: 0 0 15px rgba(255, 188, 108, 0.5);
+        --text-light: #ecf3ff;
+        --text-dim: #b0c2e0;
+        --card-bg: rgba(25, 25, 50, 0.7);
+        --transition: all 0.3s ease;
+        --bg-gradient: radial-gradient(circle at 30% 40%, #1a1f3a, #0a0a1a 90%);
+        --navbar-bg: rgba(10, 10, 25, 0.7);
+        --footer-bg: rgba(8, 8, 20, 0.8);
+        --shadow-color: rgba(0, 0, 0, 0.7);
+        --chatbot-bg: rgba(30, 30, 55, 0.9);
+        --bot-message-bg: rgba(255, 255, 255, 0.08);
+        --input-bg: rgba(10, 10, 25, 0.6);
+      }
+
+      /* Light theme (cosmic light) */
+      body.light-theme {
+        --bg-dark: #f0f4ff;
+        --bg-deep: #e2e9ff;
+        --glass-bg: rgba(255, 255, 255, 0.6);
+        --glass-border: rgba(95, 158, 255, 0.4);
+        --premium: #3a7bd5;
+        --premium-glow: 0 0 15px rgba(58, 123, 213, 0.4);
+        --gold: #d48c3a;
+        --gold-glow: 0 0 15px rgba(212, 140, 58, 0.3);
+        --text-light: #11223b;
+        --text-dim: #2f4670;
+        --card-bg: rgba(255, 255, 255, 0.7);
+        --bg-gradient: radial-gradient(circle at 30% 40%, #f0f8ff, #dce5ff);
+        --navbar-bg: rgba(255, 255, 255, 0.7);
+        --footer-bg: rgba(255, 255, 255, 0.6);
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --chatbot-bg: rgba(255, 255, 255, 0.9);
+        --bot-message-bg: #e2e9ff;
+        --input-bg: #ffffff;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg-gradient);
+        color: var(--text-light);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+        min-height: 100vh;
+        transition: background 0.3s, color 0.3s;
+        touch-action: pan-y; /* allow vertical scroll, but we'll detect horizontal swipes */
+      }
+
+      /* ensure content is above canvas */
+      header,
+      section,
+      footer {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ----- STICKY NAVBAR (glassmorphism) ----- */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        background: var(--navbar-bg);
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--glass-border);
+        box-shadow: 0 4px 20px var(--shadow-color);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--text-light) 0%,
+          var(--gold) 80%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: var(--transition);
+        position: relative;
+        padding-bottom: 4px;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--premium);
+        box-shadow: var(--premium-glow);
+        transition: width 0.25s;
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a:focus::after {
+        width: 100%;
+      }
+
+      .nav-links a:hover {
+        color: var(--gold);
+        text-shadow: 0 0 5px var(--gold);
+      }
+
+      /* ----- SECTION BASE (with scroll reveal) ----- */
+      section {
+        padding: 6rem 8%;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1),
+          transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        background: linear-gradient(135deg, var(--text-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+        letter-spacing: -0.02em;
+        border-left: 6px solid var(--premium);
+        padding-left: 1.5rem;
+        box-shadow: -8px 0 20px var(--premium-glow);
+      }
+
+      /* ----- HERO SECTION (with typing effect) ----- */
+      .hero {
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-content {
+        max-width: 900px;
+      }
+
+      .hero h1 {
+        font-size: 4.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero h1 span {
+        background: linear-gradient(145deg, var(--text-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+        filter: drop-shadow(0 0 12px var(--gold));
+      }
+
+      /* Typing effect container */
+      .hero .typed-container {
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        margin-bottom: 1.5rem;
+        min-height: 3.5rem;
+      }
+
+      .hero .static-text {
+        margin-right: 0.5rem;
+        white-space: nowrap;
+      }
+
+      .hero .typed-text {
+        color: var(--premium);
+        border-right: 3px solid var(--premium);
+        padding-right: 0.5rem;
+        animation: blink 0.7s infinite;
+        font-weight: 600;
+        text-shadow: var(--premium-glow);
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          border-color: var(--premium);
+        }
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        max-width: 650px;
+        color: var(--text-dim);
+        margin-bottom: 2.5rem;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 1rem 2.2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+      }
+
+      .btn-primary {
+        background: var(--premium);
+        color: var(--bg-dark);
+        box-shadow: var(--premium-glow);
+      }
+
+      .btn-primary:hover {
+        background: color-mix(in srgb, var(--premium) 80%, white);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 12px 28px var(--premium);
+      }
+
+      .btn-outline {
+        border: 2px solid var(--gold);
+        color: var(--gold);
+        background: transparent;
+      }
+
+      .btn-outline:hover {
+        background: var(--gold);
+        color: var(--bg-dark);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px var(--gold);
+      }
+
+      /* ----- ABOUT & SKILLS (glass grid) ----- */
+      .about-text {
+        font-size: 1.25rem;
+        color: var(--text-dim);
+        max-width: 850px;
+        margin-bottom: 3.5rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(8px);
+        padding: 2rem 2.5rem;
+        border-radius: 40px;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 20px 30px -10px var(--shadow-color);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .skill-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        border-radius: 32px;
+        padding: 2rem 1.8rem;
+        transition: var(--transition), transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 20px 25px -12px var(--shadow-color);
+        cursor: pointer;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--premium);
+        box-shadow: 0 30px 35px -12px var(--premium);
+      }
+
+      /* 3D click effect */
+      .skill-card.click-3d,
+      .about-text.click-3d {
+        transform: perspective(500px) rotateX(2deg) rotateY(5deg) scale(1.02);
+        box-shadow: 0 30px 40px -20px var(--premium);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .skill-icon {
+        font-size: 2.5rem;
+        color: var(--gold);
+        margin-bottom: 1.2rem;
+        filter: drop-shadow(0 0 8px var(--gold));
+      }
+
+      .skill-card h3 {
+        font-size: 1.7rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-light);
+      }
+
+      .skill-card p {
+        color: var(--text-dim);
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .skill-tags span {
+        background: rgba(95, 158, 255, 0.15);
+        border: 1px solid var(--glass-border);
+        border-radius: 40px;
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--gold);
+      }
+
+      /* ----- PROJECTS SECTION (with image) ----- */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        border-radius: 40px;
+        padding: 2.5rem;
+        transition: var(--transition);
+        box-shadow: 0 20px 30px -10px var(--shadow-color);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .project-card:hover {
+        border-color: var(--gold);
+        transform: scale(1.01) translateY(-6px);
+        box-shadow: 0 25px 35px -8px var(--gold);
+      }
+
+      /* Project image container */
+      .project-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(145deg, var(--premium), var(--gold));
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* organic shape */
+        box-shadow: var(--premium-glow), 0 10px 20px rgba(0, 0, 0, 0.3);
+        animation: floatShape 6s ease-in-out infinite;
+        transition: var(--transition);
+      }
+
+      .project-image i {
+        font-size: 3.5rem;
+        color: var(--bg-dark);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+      }
+
+      @keyframes floatShape {
+        0% {
+          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+          transform: translateY(0);
+        }
+        50% {
+          border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+          transform: translateY(-8px);
+        }
+        100% {
+          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+          transform: translateY(0);
+        }
+      }
+
+      .project-card h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--text-light), var(--gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0 1.5rem;
+        justify-content: center;
+      }
+
+      .project-tech span {
+        background: rgba(95, 158, 255, 0.1);
+        border: 1px solid var(--glass-border);
+        border-radius: 50px;
+        padding: 0.3rem 1.2rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--premium);
+      }
+
+      .project-desc {
+        color: var(--text-dim);
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      /* ----- CONTACT SECTION (glass) ----- */
+      .contact-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: 50px;
+        padding: 3rem 3.5rem;
+        max-width: 700px;
+        box-shadow: 0 25px 40px -12px var(--shadow-color);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1.8rem;
+        font-size: 1.3rem;
+        color: var(--text-light);
+        border-bottom: 1px dashed var(--glass-border);
+        padding-bottom: 1.2rem;
+      }
+
+      .contact-item i {
+        width: 40px;
+        font-size: 2rem;
+        color: var(--gold);
+        filter: drop-shadow(0 0 8px var(--gold));
+      }
+
+      .contact-item a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: var(--transition);
+        word-break: break-all;
+      }
+
+      .contact-item a:hover {
+        color: var(--gold);
+        text-shadow: 0 0 8px var(--gold);
+      }
+
+      /* ----- FOOTER ----- */
+      footer {
+        text-align: center;
+        padding: 2rem 5%;
+        background: var(--footer-bg);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid var(--glass-border);
+        font-size: 1.1rem;
+        color: var(--text-dim);
+      }
+
+      footer i {
+        color: var(--gold);
+        margin: 0 4px;
+      }
+
+      /* ----- CHATBOT with premium atom icon ----- */
+      .chatbot-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, var(--premium), var(--gold));
+        color: var(--bg-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        box-shadow: 0 0 20px var(--premium), 0 0 30px var(--gold);
+        cursor: pointer;
+        z-index: 200;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        transition: var(--transition);
+        animation: atomicPulse 3s infinite;
+      }
+
+      @keyframes atomicPulse {
+        0% {
+          box-shadow: 0 0 20px var(--premium), 0 0 30px var(--gold);
+        }
+        50% {
+          box-shadow: 0 0 30px var(--gold), 0 0 40px var(--premium);
+        }
+        100% {
+          box-shadow: 0 0 20px var(--premium), 0 0 30px var(--gold);
+        }
+      }
+
+      .chatbot-button:hover {
+        transform: scale(1.15) rotate(8deg);
+        background: linear-gradient(145deg, var(--gold), var(--premium));
+      }
+
+      .chatbot-window {
+        position: fixed;
+        bottom: 110px;
+        right: 30px;
+        width: 350px;
+        height: 500px;
+        background: var(--chatbot-bg);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        box-shadow: 0 25px 50px -12px var(--shadow-color);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 199;
+        border: 1px solid var(--glass-border);
+        transform: scale(0);
+        transition: transform 0.3s ease;
+        transform-origin: bottom right;
+        border-top: 3px solid var(--premium);
+      }
+
+      .chatbot-window.open {
+        transform: scale(1);
+      }
+
+      .chatbot-header {
+        padding: 1.2rem;
+        background: linear-gradient(
+          90deg,
+          rgba(95, 158, 255, 0.2),
+          rgba(255, 188, 108, 0.2)
+        );
+        color: var(--gold);
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--glass-border);
+      }
+
+      .chatbot-header span {
+        font-size: 1.2rem;
+        text-shadow: 0 0 5px var(--gold);
+      }
+
+      .chatbot-close {
+        cursor: pointer;
+        font-size: 1.5rem;
+        opacity: 0.8;
+        transition: var(--transition);
+      }
+
+      .chatbot-close:hover {
+        opacity: 1;
+        color: var(--premium);
+      }
+
+      .chatbot-messages {
+        flex: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .message {
+        padding: 0.8rem 1rem;
+        border-radius: 20px;
+        max-width: 80%;
+        word-wrap: break-word;
+        animation: msgPop 0.3s;
+      }
+
+      @keyframes msgPop {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .user-message {
+        align-self: flex-end;
+        background: linear-gradient(145deg, var(--premium), var(--gold));
+        color: var(--bg-dark);
+        border-bottom-right-radius: 4px;
+        font-weight: 500;
+      }
+
+      .bot-message {
+        align-self: flex-start;
+        background: var(--bot-message-bg);
+        color: var(--text-light);
+        border-bottom-left-radius: 4px;
+        border: 1px solid var(--glass-border);
+      }
+
+      .chatbot-input-area {
+        display: flex;
+        padding: 0.8rem;
+        gap: 0.5rem;
+        border-top: 1px solid var(--glass-border);
+      }
+
+      .chatbot-input-area input {
+        flex: 1;
+        padding: 0.8rem;
+        border-radius: 40px;
+        border: 1px solid var(--glass-border);
+        outline: none;
+        background: var(--input-bg);
+        color: var(--text-light);
+        font-family: "Inter", sans-serif;
+      }
+
+      .chatbot-input-area input::placeholder {
+        color: var(--text-dim);
+      }
+
+      .chatbot-input-area button {
+        background: linear-gradient(145deg, var(--premium), var(--gold));
+        color: var(--bg-dark);
+        border: none;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1.2rem;
+      }
+
+      .chatbot-input-area button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px var(--gold);
+      }
+
+      /* ----- RESPONSIVE DESIGN ----- */
+      @media (max-width: 992px) {
+        .hero h1 {
+          font-size: 3.8rem;
+        }
+        .hero .typed-container {
+          font-size: 1.8rem;
+        }
+        section {
+          padding: 5rem 5%;
+        }
+        .project-image {
+          width: 80px;
+          height: 80px;
+        }
+        .project-image i {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          gap: 10px;
+          padding: 0.8rem 3%;
+        }
+        .nav-links {
+          gap: 1.5rem;
+        }
+        .logo {
+          font-size: 1.6rem;
+        }
+        .hero h1 {
+          font-size: 3.2rem;
+        }
+        .hero .typed-container {
+          font-size: 1.5rem;
+          flex-wrap: wrap;
+        }
+        .hero p {
+          font-size: 1.1rem;
+        }
+        .section-title {
+          font-size: 2.4rem;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-container {
+          padding: 2rem 1.8rem;
+        }
+        .contact-item {
+          font-size: 1.1rem;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+        .chatbot-window {
+          width: 300px;
+          right: 20px;
+          bottom: 90px;
+        }
+        .chatbot-button {
+          width: 60px;
+          height: 60px;
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-links {
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .hero h1 {
+          font-size: 2.7rem;
+        }
+        .btn {
+          padding: 0.8rem 1.6rem;
+        }
+        .project-card {
+          padding: 1.8rem;
+        }
+        .project-card h3 {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* focus outline for accessibility */
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 4px;
+      }
+    </style>
+  </head>
+  <body class="dark-theme">
+    <!-- STICKY NAVBAR (no theme toggle button) -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">Mohan Prasad N</div>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About & Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div style="display: flex; gap: 1rem; align-items: center">
+          <a
+            href="https://github.com/Mohan05"
+            target="_blank"
+            rel="noopener"
+            style="color: var(--gold); font-size: 1.5rem"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO SECTION with typing effect -->
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <h1>Hi, I'm <span>Mohan Prasad N</span></h1>
+        <div class="typed-container">
+          <span class="static-text">I'm a</span>
+          <span class="typed-text" id="typed-text"></span>
+        </div>
+        <p>
+          I build scalable web applications with Node.js, Express, MongoDB, and
+          strong DSA fundamentals. Certified in Oracle AI. Open for intern
+          roles.
+        </p>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary"
+            ><i class="fas fa-arrow-down"></i> View Projects</a
+          >
+          <a
+            href="https://github.com/Mohan05"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-outline"
+            ><i class="fab fa-github"></i> GitHub</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & SKILLS (now with 6 skills) -->
+    <section id="about">
+      <h2 class="section-title">About & Skills</h2>
+      <div class="about-text">
+        <p>
+          I’m a Computer Science undergraduate passionate about backend
+          architecture, data structures, and building tools that matter. I
+          combine full‑stack development with algorithmic thinking to create
+          efficient, scalable solutions. I hold an
+          <strong>Oracle AI Foundation certification</strong> and constantly
+          explore emerging tech.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <h3>Languages & DSA</h3>
+          <p>C, C++, Java</p>
+          <div class="skill-tags">
+            <span>Data Structures</span>
+            <span>Algorithms</span>
+            <span>STL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3>Frontend</h3>
+          <p>HTML5, CSS3, JavaScript (ES6)</p>
+          <div class="skill-tags">
+            <span>Responsive</span>
+            <span>Flex/Grid</span>
+            <span>DOM</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-server"></i></div>
+          <h3>Backend & DB</h3>
+          <p>Node.js, Express, MongoDB</p>
+          <div class="skill-tags">
+            <span>REST API</span>
+            <span>Mongoose</span>
+            <span>JWT</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-brain"></i></div>
+          <h3>AI & Core</h3>
+          <p>Oracle AI Certified</p>
+          <div class="skill-tags">
+            <span>Problem Solving</span>
+            <span>OOP</span>
+            <span>Git</span>
+          </div>
+        </div>
+        <!-- Two new skill cards -->
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Cloud & DevOps</h3>
+          <p>AWS, Docker, CI/CD</p>
+          <div class="skill-tags">
+            <span>EC2</span>
+            <span>Docker</span>
+            <span>GitHub Actions</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <h3>Databases</h3>
+          <p>MySQL, PostgreSQL, Redis</p>
+          <div class="skill-tags">
+            <span>SQL</span>
+            <span>Indexing</span>
+            <span>Caching</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (now with 4 projects) -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-clipboard-list"></i>
+          </div>
+          <h3>Campus Fault Reporting</h3>
+          <div class="project-tech">
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>MongoDB</span>
+            <span>EJS</span>
+            <span>JWT</span>
+          </div>
+          <p class="project-desc">
+            Full‑stack app for reporting campus issues with real‑time tracking,
+            role access, and image uploads.
+          </p>
+          <a
+            href="https://github.com/Mohan05"
+            target="_blank"
+            class="btn btn-outline"
+            style="padding: 0.6rem 1.5rem; font-size: 0.9rem"
+          >
+            <i class="fab fa-github"></i> Code
+          </a>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Analytics Dashboard</h3>
+          <div class="project-tech">
+            <span>React</span>
+            <span>D3.js</span>
+            <span>Node.js</span>
+            <span>PostgreSQL</span>
+          </div>
+          <p class="project-desc">
+            Interactive dashboard for visualizing business metrics with
+            real‑time updates and customizable widgets.
+          </p>
+          <a
+            href="https://github.com/Mohan05"
+            target="_blank"
+            class="btn btn-outline"
+            style="padding: 0.6rem 1.5rem; font-size: 0.9rem"
+          >
+            <i class="fab fa-github"></i> Code
+          </a>
+        </div>
+        <!-- Project 3 (new) -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>AI Chatbot API</h3>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>Flask</span>
+            <span>OpenAI</span>
+            <span>Redis</span>
+          </div>
+          <p class="project-desc">
+            Intelligent chatbot service with context memory and sentiment
+            analysis, integrated with Slack and Discord.
+          </p>
+          <a
+            href="https://github.com/Mohan05"
+            target="_blank"
+            class="btn btn-outline"
+            style="padding: 0.6rem 1.5rem; font-size: 0.9rem"
+          >
+            <i class="fab fa-github"></i> Code
+          </a>
+        </div>
+        <!-- Project 4 (new) -->
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Auth Microservice</h3>
+          <div class="project-tech">
+            <span>Node.js</span>
+            <span>OAuth2</span>
+            <span>JWT</span>
+            <span>MongoDB</span>
+          </div>
+          <p class="project-desc">
+            Scalable authentication service supporting social login,
+            multi‑factor auth, and session management.
+          </p>
+          <a
+            href="https://github.com/Mohan05"
+            target="_blank"
+            class="btn btn-outline"
+            style="padding: 0.6rem 1.5rem; font-size: 0.9rem"
+          >
+            <i class="fab fa-github"></i> Code
+          </a>
+        </div>
+      </div>
+      <p style="margin-top: 2rem; color: var(--text-dim); text-align: center">
+        <i class="fas fa-code-branch" style="color: var(--gold)"></i> More
+        projects & contributions on my GitHub profile.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-container">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:mohanprasad05sarala@gmail.com"
+            >mohanprasad05sarala@gmail.com</a
+          >
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <a
+            href="https://linkedin.com/in/mohanprasadn"
+            target="_blank"
+            rel="noopener"
+            >linkedin.com/in/mohanprasadn</a
+          >
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/Mohan05" target="_blank" rel="noopener"
+            >github.com/Mohan05</a
+          >
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Chennai, India · open to remote/internship</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        © <span id="year"></span> Mohan Prasad N · Built for future engineers
+      </p>
+    </footer>
+
+    <!-- CHATBOT with premium atom icon -->
+    <div class="chatbot-button" id="chatbot-toggle">
+      <i class="fas fa-atom"></i>
+    </div>
+    <div class="chatbot-window" id="chatbot-window">
+      <div class="chatbot-header">
+        <span>⚛️ Neural AI</span>
+        <span class="chatbot-close" id="chatbot-close">&times;</span>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <div class="message bot-message">
+          Hello! I'm your advanced AI assistant. Ask me anything about Mohan's
+          skills, projects, experience, or even fun facts!
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <input
+          type="text"
+          id="chatbot-input"
+          placeholder="Ask me anything..."
+        />
+        <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        // Dynamic year
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Smooth scroll
+        document.querySelectorAll(".nav-links a").forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            if (href && href.startsWith("#")) {
+              e.preventDefault();
+              const target = document.querySelector(href);
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+          });
+        });
+
+        // Intersection Observer for fade-up
+        const sections = document.querySelectorAll("section");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -30px 0px" }
+        );
+        sections.forEach((section) => observer.observe(section));
+        setTimeout(() => {
+          sections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+              section.classList.add("visible");
+            }
+          });
+        }, 100);
+
+        // ---------- THEME SWITCH VIA SWIPE (left/right) ----------
+        const body = document.body;
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchMoved = false;
+        const swipeThreshold = 50; // minimum horizontal distance
+
+        window.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchMoved = false;
+          },
+          false
+        );
+
+        window.addEventListener(
+          "touchmove",
+          (e) => {
+            if (!touchStartX) return;
+            const touchEndX = e.touches[0].clientX;
+            const touchEndY = e.touches[0].clientY;
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+
+            // If horizontal movement is greater than vertical and exceeds threshold, prevent default (avoid page navigation)
+            if (
+              Math.abs(deltaX) > Math.abs(deltaY) &&
+              Math.abs(deltaX) > swipeThreshold
+            ) {
+              e.preventDefault(); // Prevents browser back/forward swipe
+              touchMoved = true;
+            }
+          },
+          { passive: false }
+        );
+
+        window.addEventListener(
+          "touchend",
+          (e) => {
+            if (!touchStartX) return;
+            const touchEndX = e.changedTouches[0].clientX;
+            const deltaX = touchEndX - touchStartX;
+
+            if (touchMoved && Math.abs(deltaX) > swipeThreshold) {
+              if (deltaX < 0) {
+                // Swiped left -> light theme
+                body.classList.remove("dark-theme");
+                body.classList.add("light-theme");
+              } else {
+                // Swiped right -> dark theme
+                body.classList.remove("light-theme");
+                body.classList.add("dark-theme");
+              }
+            }
+
+            // Reset
+            touchStartX = 0;
+            touchStartY = 0;
+            touchMoved = false;
+          },
+          false
+        );
+
+        // ---------- TYPING EFFECT ----------
+        const typedElement = document.getElementById("typed-text");
+        const phrases = [
+          "Full‑Stack Developer",
+          "CS Student",
+          "MERN Stack Enthusiast",
+          "Oracle AI Certified",
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+          const currentPhrase = phrases[phraseIndex];
+          if (isDeleting) {
+            typedElement.textContent = currentPhrase.substring(
+              0,
+              charIndex - 1
+            );
+            charIndex--;
+          } else {
+            typedElement.textContent = currentPhrase.substring(
+              0,
+              charIndex + 1
+            );
+            charIndex++;
+          }
+
+          if (!isDeleting && charIndex === currentPhrase.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 2000);
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(typeEffect, 500);
+          } else {
+            setTimeout(typeEffect, isDeleting ? 50 : 100);
+          }
+        }
+        typeEffect();
+
+        // ---------- 3D CLICK EFFECT for About & Skills containers ----------
+        const skillCards = document.querySelectorAll(".skill-card");
+        const aboutText = document.querySelector(".about-text");
+
+        function add3DEffect(element) {
+          if (!element) return;
+          element.classList.add("click-3d");
+          setTimeout(() => {
+            element.classList.remove("click-3d");
+          }, 200);
+        }
+
+        skillCards.forEach((card) => {
+          card.addEventListener("click", (e) => {
+            if (e.target.tagName === "A" || e.target.closest("a")) return;
+            add3DEffect(card);
+          });
+        });
+
+        if (aboutText) {
+          aboutText.addEventListener("click", (e) => {
+            if (e.target.tagName === "A" || e.target.closest("a")) return;
+            add3DEffect(aboutText);
+          });
+        }
+
+        // ---------- CHATBOT with enhanced AI ----------
+        const chatbotWindow = document.getElementById("chatbot-window");
+        const toggleBtn = document.getElementById("chatbot-toggle");
+        const closeBtn = document.getElementById("chatbot-close");
+        const sendBtn = document.getElementById("chatbot-send");
+        const input = document.getElementById("chatbot-input");
+        const messagesDiv = document.getElementById("chatbot-messages");
+
+        function addMessage(text, sender) {
+          const msgDiv = document.createElement("div");
+          msgDiv.classList.add(
+            "message",
+            sender === "user" ? "user-message" : "bot-message"
+          );
+          msgDiv.textContent = text;
+          messagesDiv.appendChild(msgDiv);
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function botResponse(userMsg) {
+          const msg = userMsg.toLowerCase();
+
+          // Greetings
+          if (
+            msg.includes("hello") ||
+            msg.includes("hi") ||
+            msg.includes("hey")
+          )
+            return "Hello! I'm here to help. Ask me about Mohan's skills, projects, education, or anything else!";
+
+          // Skills
+          if (
+            msg.includes("skill") ||
+            msg.includes("technologies") ||
+            msg.includes("tech stack")
+          )
+            return "Mohan is proficient in: Node.js, Express, MongoDB, C, C++, Java, DSA, React, AWS, Docker, PostgreSQL, and Oracle AI. He's also learning TypeScript and GraphQL.";
+
+          // Projects
+          if (msg.includes("project"))
+            return "Mohan has built several projects: Campus Fault Reporting System (Node.js/MongoDB), Analytics Dashboard (React/D3), AI Chatbot API (Python/Flask), and an Auth Microservice (Node.js/OAuth2). You can find them on his GitHub.";
+
+          // Experience / internships
+          if (msg.includes("experience") || msg.includes("internship"))
+            return "Mohan is actively seeking internships. He has experience building full‑stack apps and contributing to open source. He's currently a CS student.";
+
+          // Education
+          if (
+            msg.includes("education") ||
+            msg.includes("study") ||
+            msg.includes("university")
+          )
+            return "Mohan is pursuing a Computer Science degree. He's also certified in Oracle Cloud Infrastructure AI Foundations (2025).";
+
+          // Contact
+          if (
+            msg.includes("contact") ||
+            msg.includes("email") ||
+            msg.includes("reach")
+          )
+            return "You can reach Mohan at mohanprasad05sarala@gmail.com or connect via LinkedIn: linkedin.com/in/mohanprasadn";
+
+          // GitHub
+          if (msg.includes("github"))
+            return "Mohan's GitHub is github.com/Mohan05. He has repositories for his projects and contributions.";
+
+          // Certifications
+          if (
+            msg.includes("certification") ||
+            msg.includes("oracle") ||
+            msg.includes("ai")
+          )
+            return "Mohan holds the Oracle Cloud Infrastructure 2025 AI Foundations Associate certification. He's also planning to take the AWS Certified Developer exam.";
+
+          // Fun facts / hobbies
+          if (
+            msg.includes("hobby") ||
+            msg.includes("fun") ||
+            msg.includes("interest")
+          )
+            return "Outside coding, Mohan enjoys reading sci‑fi, playing chess, and experimenting with new technologies like WebAssembly and blockchain.";
+
+          // Location
+          if (
+            msg.includes("location") ||
+            msg.includes("chennai") ||
+            msg.includes("india")
+          )
+            return "Mohan is based in Chennai, India, and is open to remote or on‑site internships worldwide.";
+
+          // Default response
+          return "I'm not sure about that. You can ask me about Mohan's skills, projects, experience, certifications, or hobbies!";
+        }
+
+        function handleSend() {
+          const text = input.value.trim();
+          if (text === "") return;
+          addMessage(text, "user");
+          input.value = "";
+          setTimeout(() => {
+            const reply = botResponse(text);
+            addMessage(reply, "bot");
+          }, 400);
+        }
+
+        toggleBtn.addEventListener("click", () => {
+          chatbotWindow.classList.toggle("open");
+        });
+        closeBtn.addEventListener("click", () => {
+          chatbotWindow.classList.remove("open");
+        });
+        sendBtn.addEventListener("click", handleSend);
+        input.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") handleSend();
+        });
+      })();
+    </script>
+  </body>
+</html>
