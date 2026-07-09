@@ -45,8 +45,7 @@ html, body {
   background: var(--bg);
   color: var(--s-text);
   font-family: var(--body);
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -61,7 +60,7 @@ html, body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  min-width: 1080px; /* layout stays identical on every device — no mobile reflow */
+  /* height: 100dvh set below for mobile browsers with dynamic toolbars */
 }
 
 /* ── TITLE BAR ──────────────────────────────────────── */
@@ -360,6 +359,11 @@ html, body {
 
 .file-pane { display: none; animation: fadein 0.15s ease; }
 .file-pane.active { display: block; }
+
+/* Mobile browsers resize their chrome (address bar) — 100dvh accounts for that so the layout never jumps or clips */
+@supports (height: 100dvh) {
+  .workspace { height: 100dvh; }
+}
 
 @keyframes fadein {
   from { opacity: 0; transform: translateY(3px); }
@@ -885,9 +889,94 @@ html, body {
 }
 .sb-download:hover { color: var(--s-text); }
 
-/* Layout is intentionally fixed (see .workspace min-width above) so the
-   design looks identical on every device — phones/tablets get a
-   horizontal scrollbar instead of a restructured layout. */
+/* ══════════════════════════════════════════════════════
+   MOBILE / TOUCH RESPONSIVE
+   Same visual language (colors, type, iconography, the
+   "code editor" concept) — layout mechanics adapt so it's
+   actually usable with a thumb on a small screen.
+══════════════════════════════════════════════════════ */
+@media (max-width: 860px) {
+
+  /* Explorer becomes an off-canvas drawer instead of a
+     permanent column, so the editor gets the full width. */
+  .mobile-toggle { display: flex; min-height: 32px; }
+
+  .activity-bar { display: none; }
+
+  .sidebar {
+    position: fixed;
+    top: 44px; left: 0; bottom: 0;
+    width: min(78vw, 300px);
+    transform: translateX(-100%);
+    z-index: 500;
+    box-shadow: 6px 0 28px rgba(0,0,0,0.55);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .file-item { padding: 10px 12px; font-size: 0.78rem; }
+
+  /* Title bar: keep the same elements, just compact them
+     so the resume CTA and socials stay reachable. */
+  .titlebar { padding: 0 10px; gap: 8px; }
+  .titlebar-title { display: none; }
+  .titlebar-left { gap: 8px; }
+  .titlebar-right { gap: 6px; }
+  .pill-label { display: none; }
+  .pill { padding: 6px; }
+  .tb-social { width: 32px; height: 32px; }
+  .tb-resume { padding: 7px 10px; }
+  .tb-resume-label { display: none; }
+
+  /* Code editor conceit: line numbers are decorative on a
+     phone and just steal width — drop them here. */
+  .line-gutter { display: none; }
+  .editor-viewport { padding: 18px 16px 32px; }
+
+  .tab { padding: 0 12px; font-size: 0.7rem; }
+
+  .md-h1 { font-size: 1.6rem; }
+  .md-li { grid-template-columns: 92px 1fr; }
+
+  .proj-card { padding: 16px; }
+  .proj-actions { flex-wrap: wrap; gap: 10px; }
+
+  .skl-grid { grid-template-columns: 1fr; }
+
+  /* Terminal: resizing by drag doesn't work with touch, so
+     hide the handle and cap the expanded height so the
+     on-screen keyboard doesn't push it off-screen. */
+  .terminal-resize-handle { display: none; }
+  .terminal-panel { max-height: 50vh; }
+  .terminal-panel:not(.collapsed) { height: 42vh !important; }
+  .term-hint { display: none; }
+
+  /* iOS/Android auto-zoom on inputs under 16px — keep all
+     typed fields at 16px so the page never jumps on focus. */
+  .term-real-input,
+  .sh-input,
+  .sh-textarea { font-size: 16px; }
+
+  .sh-form-wrap { padding: 4px 0; }
+  .sh-submit { width: 100%; justify-content: center; padding: 12px 20px; }
+
+  .modal-overlay { padding: 12px; }
+  .modal-box { max-width: 100%; max-height: 88vh; overflow-y: auto; }
+  .modal-close-btn { width: 32px; height: 32px; }
+
+  .statusbar { overflow-x: auto; }
+  .statusbar .sb-item:nth-child(2) { display: none; } /* UTF-8 — non-essential on mobile */
+
+  /* Bigger, thumb-friendly hit areas throughout, without
+     changing how anything looks. */
+  .act-btn { width: 42px; height: 42px; }
+  .term-toggle-btn { width: 30px; height: 30px; }
+}
+
+@media (max-width: 420px) {
+  .titlebar-right { gap: 4px; }
+  .tb-social { width: 30px; height: 30px; }
+  .md-li { grid-template-columns: 1fr; gap: 2px; }
+  .md-li-key { margin-top: 6px; }
+}
 
 /* ── MOBILE OVERLAY ─────────────────────────────────── */
 .mob-overlay {
@@ -915,13 +1004,16 @@ html, body {
     </div>
     <div class="titlebar-right">
       <button class="mobile-toggle" id="mob-toggle">☰ Files</button>
-      <div class="pill"><span class="pill-dot"></span>GCE Salem · B.E CSE</div>
+      <div class="pill"><span class="pill-dot"></span><span class="pill-label">GCE Salem · B.E CSE</span></div>
+      <a class="tb-social" href="https://github.com/M0han05" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
       <a class="tb-social" href="https://www.linkedin.com/in/mohan-prasad-n-770154320/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
       </a>
       <a class="tb-resume" href="resume.pdf" download="Mohan_Prasad_Resume.pdf">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Resume
+        <span class="tb-resume-label">Resume</span>
       </a>
     </div>
   </div>
