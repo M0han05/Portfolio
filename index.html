@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohan Prasad N — Software Engineer</title>
+  <meta name="description" content="Portfolio of Mohan Prasad N — Full-Stack Developer, AI/ML Enthusiast, and B.E. CSE Student." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700,800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Small Circled Red Dot Mouse Pointer -->
+  <div class="cursor-red-dot" id="cursorDot"></div>
+
+  <!-- ================================================================
+       1. DROPDOWN PILL NAVIGATION
+       ================================================================ -->
+  <header class="site-header">
+    <div class="dropdown-wrap" id="navDropdown">
+      <div class="dropdown-bar" id="dropdownBar">
+        <div class="dd-left">
+          <span class="brand-dot"></span>
+          <span class="brand-text">MOHAN</span>
+        </div>
+        <div class="dd-chevron">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <nav class="dropdown-menu">
+        <a href="#home" class="dd-link"><span>Home</span><span class="dd-link-num">01</span></a>
+        <a href="#about" class="dd-link"><span>About</span><span class="dd-link-num">02</span></a>
+        <a href="#skills" class="dd-link"><span>Skills</span><span class="dd-link-num">03</span></a>
+        <a href="#projects" class="dd-link"><span>Projects</span><span class="dd-link-num">04</span></a>
+        <a href="#timeline" class="dd-link"><span>Timeline</span><span class="dd-link-num">05</span></a>
+        <a href="#contact" class="dd-link"><span>Contact</span><span class="dd-link-num">06</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       2. CINEMATIC HERO + ABOUT (Scroll-driven zoom & 3D color rotation)
+       ================================================================ -->
+  <section class="cinematic-wrapper" id="home">
+    <div class="cinematic-stage">
+
+      <!-- Hero Center Title (Clearly displayed solid black lettering in the background) -->
+      <div class="hero-center-title">
+        <div class="hero-word-wrap word-software">
+          <span class="hero-accent-star">
+            <!-- 3D Star: base layer + mid highlight + specular top shine + rim light -->
+            <svg width="52" height="52" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="starBase" cx="38%" cy="32%" r="70%">
+                  <stop offset="0%"   stop-color="#555555"/>
+                  <stop offset="45%"  stop-color="#1a1a1a"/>
+                  <stop offset="100%" stop-color="#000000"/>
+                </radialGradient>
+                <radialGradient id="starShine" cx="35%" cy="28%" r="55%">
+                  <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.55"/>
+                  <stop offset="60%"  stop-color="#FFFFFF" stop-opacity="0.08"/>
+                  <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="starRim" cx="70%" cy="75%" r="50%">
+                  <stop offset="0%"   stop-color="#888888" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#888888" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <!-- Shadow -->
+              <ellipse cx="50" cy="94" rx="30" ry="5" fill="rgba(0,0,0,0.22)"/>
+              <!-- Base 3D star shape -->
+              <path d="M50 0 C53 34 66 47 100 50 C66 53 53 66 50 100 C47 66 34 53 0 50 C34 47 47 34 50 0 Z" fill="url(#starBase)"/>
+              <!-- Inner star for depth -->
+              <path d="M50 12 C52 38 62 48 88 50 C62 52 52 62 50 88 C48 62 38 52 12 50 C38 48 48 38 50 12 Z" fill="#222222" opacity="0.6"/>
+              <!-- Specular top-left shine -->
+              <path d="M50 0 C53 34 66 47 100 50 C66 53 53 66 50 100 C47 66 34 53 0 50 C34 47 47 34 50 0 Z" fill="url(#starShine)"/>
+              <!-- Rim light bottom-right -->
+              <path d="M50 0 C53 34 66 47 100 50 C66 53 53 66 50 100 C47 66 34 53 0 50 C34 47 47 34 50 0 Z" fill="url(#starRim)"/>
+              <!-- Tiny glint dot -->
+              <circle cx="34" cy="24" r="4" fill="white" opacity="0.6"/>
+            </svg>
+          </span>
+          <span class="hero-main-word">SOFTWARE</span>
+        </div>
+        <div class="hero-word-wrap word-engineer">
+          <span class="hero-main-word">ENGINEER</span>
+          <span class="hero-accent-lightning">
+            <!-- 3D Lightning Bolt: extruded side face + top face + specular highlight -->
+            <svg width="46" height="56" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="boltFace" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%"   stop-color="#4a4a4a"/>
+                  <stop offset="50%"  stop-color="#1a1a1a"/>
+                  <stop offset="100%" stop-color="#000000"/>
+                </linearGradient>
+                <linearGradient id="boltSide" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%"   stop-color="#000000"/>
+                  <stop offset="100%" stop-color="#2a2a2a"/>
+                </linearGradient>
+                <linearGradient id="boltShine" x1="0%" y1="0%" x2="60%" y2="100%">
+                  <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.5"/>
+                  <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.1"/>
+                  <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Shadow -->
+              <ellipse cx="50" cy="116" rx="22" ry="4" fill="rgba(0,0,0,0.25)"/>
+              <!-- Extruded right side face (3D depth) -->
+              <path d="M60 2 L90 52 L54 52 L38 112 L45 112 L61 55 L97 55 L67 5 Z" fill="url(#boltSide)" opacity="0.7"/>
+              <!-- Extruded bottom-right face -->
+              <path d="M38 112 L45 112 L34 120 L27 120 Z" fill="#111111"/>
+              <!-- Main front face -->
+              <path d="M58 2 L15 65 L48 65 L32 120 L85 50 L52 50 Z" fill="url(#boltFace)"/>
+              <!-- Specular shine on top-left edge -->
+              <path d="M58 2 L15 65 L48 65 L32 120 L85 50 L52 50 Z" fill="url(#boltShine)"/>
+              <!-- Bright edge highlight line -->
+              <path d="M58 2 L20 60" stroke="white" stroke-width="1.5" stroke-opacity="0.35" stroke-linecap="round"/>
+              <!-- Small glint -->
+              <circle cx="42" cy="22" r="3" fill="white" opacity="0.5"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-bar-bottom" id="heroBarBottom">
+        <span class="hero-copyright" id="heroCopyright">&copy;2025</span>
+        <span class="hero-created-tag">/ENGINEERING SINCE 2023</span>
+      </div>
+
+      <!-- Cinematic Avatar (Starts straight, small size, black-faded at bottom center) -->
+      <div class="cinema-avatar" id="cinemaAvatar">
+        <img src="assets/images/mohan-prasad.jpg" alt="Mohan Prasad N" />
+      </div>
+
+      <!-- About Overlay (Left text | Center Avatar | Right text) -->
+      <div class="about-overlay" id="aboutOverlay">
+        <div class="about-grid" id="about">
+          <!-- Left Column: Story & Greeting -->
+          <div class="about-col-left">
+            <span class="about-tag">About Me</span>
+            <h2 class="about-salutation">Hey!</h2>
+            <p class="about-lead">
+              I'm <strong>Mohan Prasad N</strong>, a B.E. Computer Science student at
+              <strong>Government College of Engineering, Salem</strong>.
+            </p>
+            <p class="about-desc">
+              Passionate about building clean, scalable systems and exploring the frontiers of
+              <strong>Artificial Intelligence</strong>. Driven by clarity, structured systems, and intentional design.
+            </p>
+          </div>
+
+          <!-- Center Column: Center slot for the docked big avatar -->
+          <div class="about-center-spacer"></div>
+
+          <!-- Right Column: More about me -->
+          <div class="about-col-right">
+            <p class="about-desc">
+              Currently in my <strong>4th year (Final Year)</strong> of engineering (CGPA: 7.85/10),
+              specializing in <strong>Java, Spring Boot 3, REST APIs, and PostgreSQL</strong>,
+              combining enterprise backend reliability with modern machine learning.
+            </p>
+            <p class="about-desc">
+              I was an <strong>SIH 2025 Internal Finalist</strong> at GCE Salem, leading Team "Code Nova",
+              and hold an <strong>Oracle Cloud Infrastructure 2025 AI Foundations</strong> certification.
+              I thrive at the intersection of clean code and creative problem-solving.
+            </p>
+
+            <!-- Editorial Curriculum Vitae Action -->
+            <div class="about-resume-wrap">
+              <button class="about-cv-btn js-open-resume" id="aboutResumeBtn" type="button" aria-label="Explore Curriculum Vitae">
+                <span class="cv-status-dot"></span>
+                <span class="cv-btn-label">Curriculum Vitae</span>
+                <span class="cv-btn-arrow">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       3. SKILLS — Two Matching Containers (Directly from User Sketch)
+       Box 1 (Left): Clean skills list (HTML CSS, Java, Python, VS Code, etc.)
+       Box 2 (Right): "Skill" header + Interactive jumping "logo" arena
+       ================================================================ -->
+  <!-- ================================================================
+       3. SKILLS & TECHNOLOGIES — Clean, Professional Brand Cards
+       ================================================================ -->
+  <section class="skills-section" id="skills">
+    <div class="container">
+
+      <!-- Section Header -->
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Skills &amp; Technologies</h2>
+          <p class="section-subtitle">Core languages, backend architectures, databases &amp; developer tools</p>
+        </div>
+        <span class="section-meta">Technical Stack</span>
+      </div>
+
+      <!-- Single Container: All Skills in One Box — official brand logos only -->
+      <div class="skills-single-card">
+        <div class="skills-logos-wrap">
+
+          <div class="skill-logo-tile" title="Java" aria-label="Java">
+            <img src="assets/images/skills/java.svg" alt="Java logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="Spring Boot" aria-label="Spring Boot">
+            <img src="assets/images/skills/spring-boot.svg" alt="Spring Boot logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="Python" aria-label="Python">
+            <img src="assets/images/skills/python.svg" alt="Python logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="PostgreSQL" aria-label="PostgreSQL">
+            <img src="assets/images/skills/postgresql.svg" alt="PostgreSQL logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="C++" aria-label="C++">
+            <img src="assets/images/skills/cpp.svg" alt="C++ logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="C" aria-label="C">
+            <img src="assets/images/skills/c.svg" alt="C logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="JavaScript" aria-label="JavaScript">
+            <img src="assets/images/skills/javascript.svg" alt="JavaScript logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="HTML5" aria-label="HTML5">
+            <img src="assets/images/skills/html5.svg" alt="HTML5 logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="CSS3" aria-label="CSS3">
+            <img src="assets/images/skills/css3.svg" alt="CSS3 logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="Git" aria-label="Git">
+            <img src="assets/images/skills/git.svg" alt="Git logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="GitHub" aria-label="GitHub">
+            <img src="assets/images/skills/github.svg" alt="GitHub logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="VS Code" aria-label="VS Code">
+            <img src="assets/images/skills/vscode.svg" alt="VS Code logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="TensorFlow (AI &amp; Machine Learning)" aria-label="TensorFlow (AI &amp; Machine Learning)">
+            <img src="assets/images/skills/tensorflow.svg" alt="TensorFlow (AI &amp; Machine Learning) logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="Docker" aria-label="Docker">
+            <img src="assets/images/skills/docker.svg" alt="Docker logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+          <div class="skill-logo-tile" title="Linux" aria-label="Linux">
+            <img src="assets/images/skills/linux.svg" alt="Linux logo" width="64" height="64" loading="lazy" decoding="async" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       4. FEATURED PROJECTS — 2×2 Grid
+       ================================================================ -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Projects</h2>
+        <span class="section-meta">Selected work</span>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <a href="https://github.com/M0han05/AI-based-Health-Risk-Prediction" target="_blank" rel="noopener" class="project-card">
+          <div class="project-img-wrap">
+            <img src="assets/images/project-health-risk.svg" alt="AI Health Risk Prediction dashboard" />
+            <span class="project-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </span>
+          </div>
+          <div class="project-info">
+            <span class="project-name">AI Health Risk Prediction</span>
+            <span class="project-tag">ML · Python · Flask</span>
+          </div>
+        </a>
+
+        <!-- Project 2 -->
+        <a href="https://github.com/M0han05/spring-boot-library-management-api" target="_blank" rel="noopener" class="project-card">
+          <div class="project-img-wrap">
+            <img src="assets/images/project-library-api.svg" alt="Library Management API" />
+            <span class="project-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </span>
+          </div>
+          <div class="project-info">
+            <span class="project-name">Library Management API</span>
+            <span class="project-tag">Spring Boot · PostgreSQL</span>
+          </div>
+        </a>
+
+        <!-- Project 3 -->
+        <a href="https://github.com/M0han05/vehicle-management-system-java" target="_blank" rel="noopener" class="project-card">
+          <div class="project-img-wrap">
+            <img src="assets/images/project-vehicle-system.svg" alt="Vehicle Management System" />
+            <span class="project-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </span>
+          </div>
+          <div class="project-info">
+            <span class="project-name">Vehicle Management System</span>
+            <span class="project-tag">Java · OOP · CLI</span>
+          </div>
+        </a>
+
+        <!-- Project 4 -->
+        <a href="https://github.com/M0han05/code-nova-sih-2025" target="_blank" rel="noopener" class="project-card">
+          <div class="project-img-wrap">
+            <img src="assets/images/project-code-nova.svg" alt="Code Nova — SIH 2025" />
+            <span class="project-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </span>
+          </div>
+          <div class="project-info">
+            <span class="project-name">Code Nova — SIH 2025</span>
+            <span class="project-tag">Hackathon · Full Stack</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       5. EXPERIENCE TIMELINE — Dual-Column Professional Layout
+       ================================================================ -->
+  <section class="timeline-section" id="timeline">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Milestones</h2>
+          <p class="section-subtitle">Experience &amp; academic journey, newest first</p>
+        </div>
+        <span class="section-meta">Career Journey</span>
+      </div>
+
+      <ol class="tl-track" id="tlTrack">
+        <li class="tl-spine" aria-hidden="true"><span class="tl-spine-fill" id="tlFill"></span></li>
+
+        <li class="tl-item tl-left is-done">
+          <div class="tl-date">
+            <span class="tl-date-top">2025</span>
+            <span class="tl-date-bot">Completed</span>
+          </div>
+          <div class="tl-node" aria-hidden="true"><span></span></div>
+          <article class="tl-card">
+            <div class="tl-card-top">
+              <span class="tl-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Internship</span>
+              <span class="tl-done"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Completed</span>
+            </div>
+            <h3 class="tl-role">Full Stack Development Intern</h3>
+            <span class="tl-org">Odugaa Tech · Chennai</span>
+            <p class="tl-text">Engineered production enterprise web platforms using Java Spring Boot 3, RESTful APIs, and PostgreSQL. Architected scalable service layers, relational data schemas, and backend service integration.</p>
+            <ul class="tl-points">
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Architected clean Spring Boot 3 Controller–Service–Repository services</span></li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Designed relational schemas, entity models &amp; optimized queries in PostgreSQL</span></li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Built secure, high-throughput RESTful endpoints with input validation</span></li>
+            </ul>
+            <div class="tl-tags"><span class="tl-tag">Java</span><span class="tl-tag">Spring Boot 3</span><span class="tl-tag">PostgreSQL</span><span class="tl-tag">REST APIs</span><span class="tl-tag">Spring Data JPA</span></div>
+          </article>
+        </li>
+
+        <li class="tl-item tl-right is-current">
+          <div class="tl-date">
+            <span class="tl-date-top">2023</span>
+            <span class="tl-date-bot">2027</span>
+          </div>
+          <div class="tl-node" aria-hidden="true"><span></span></div>
+          <article class="tl-card">
+            <div class="tl-card-top">
+              <span class="tl-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg> Undergraduate</span>
+              <span class="tl-stat"><strong>7.85</strong><small>CGPA / 10</small></span>
+            </div>
+            <h3 class="tl-role">B.E. Computer Science &amp; Engineering</h3>
+            <span class="tl-org">Government College of Engineering, Salem</span>
+            <p class="tl-text">Currently in <strong>4th Year (Final Year)</strong>. Comprehensive curriculum in DSA, Object-Oriented Design, Relational Databases, Operating Systems, and Distributed Computing.</p>
+            <div class="tl-tags"><span class="tl-tag">Final Year</span><span class="tl-tag">DSA &amp; OOP</span><span class="tl-tag">DBMS</span><span class="tl-tag">Operating Systems</span><span class="tl-tag">Salem, TN</span></div>
+          </article>
+        </li>
+
+        <li class="tl-item tl-left">
+          <div class="tl-date">
+            <span class="tl-date-top">2021</span>
+            <span class="tl-date-bot">2023</span>
+          </div>
+          <div class="tl-node" aria-hidden="true"><span></span></div>
+          <article class="tl-card">
+            <div class="tl-card-top">
+              <span class="tl-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg> Higher Secondary</span>
+              <span class="tl-stat"><strong>93.8%</strong><small>Distinction</small></span>
+            </div>
+            <h3 class="tl-role">Higher Secondary Certificate (HSC)</h3>
+            <span class="tl-org">Dr. VGN Matric. Hr. Sec. School · Arakkonam</span>
+            <p class="tl-text">Graduated with <strong>93.8% Distinction</strong>, establishing a strong analytical and quantitative foundation in Mathematics, Physics, and Computer Science.</p>
+            <div class="tl-tags"><span class="tl-tag">Mathematics</span><span class="tl-tag">Physics</span><span class="tl-tag">Computer Science</span></div>
+          </article>
+        </li>
+
+        <li class="tl-item tl-right">
+          <div class="tl-date">
+            <span class="tl-date-top">2019</span>
+            <span class="tl-date-bot">2021</span>
+          </div>
+          <div class="tl-node" aria-hidden="true"><span></span></div>
+          <article class="tl-card">
+            <div class="tl-card-top">
+              <span class="tl-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg> Secondary</span>
+              <span class="tl-stat"><strong>1st</strong><small>Class</small></span>
+            </div>
+            <h3 class="tl-role">Secondary School Leaving Certificate (SSLC)</h3>
+            <span class="tl-org">Dr. VGN Matric. Hr. Sec. School · Arakkonam</span>
+            <p class="tl-text">Completed secondary schooling with first-class distinction, demonstrating excellence in foundational mathematics, science, and analytical logic.</p>
+            <div class="tl-tags"><span class="tl-tag">First Class</span><span class="tl-tag">Core Sciences</span><span class="tl-tag">Arakkonam, TN</span></div>
+          </article>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       6. CONTACT — Split Layout: Left Info Outside, Right Form in Black Box
+       ================================================================ -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split-layout">
+
+        <!-- Left: Information & Intro (Outside black box on linen background) -->
+        <div class="contact-outside-col">
+          <span class="contact-kicker-outside">
+            <span class="brand-dot"></span>
+            GET IN TOUCH
+          </span>
+          <h2 class="contact-title-outside">Let's build<br/>something together.</h2>
+          <p class="contact-desc-outside">
+            Have an exciting project, full-time / internship opportunity, or just want to connect?
+            Send a note directly here — I respond promptly.
+          </p>
+
+          <div class="contact-status-card-outside">
+            <span class="pulse-dot"></span>
+            <span>Available for Software Engineering &amp; AI Roles</span>
+          </div>
+
+          <div class="contact-meta-badges">
+            <div class="contact-meta-pill">
+              <span class="cmp-label">Response Time</span>
+              <span class="cmp-val">Within 24 Hours</span>
+            </div>
+            <div class="contact-meta-pill">
+              <span class="cmp-label">Location</span>
+              <span class="cmp-val">Salem &amp; Chennai, India</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Sleek Black Container Box ONLY for Form -->
+        <div class="contact-box-col">
+          <div class="contact-black-box">
+            <div class="contact-box-header">
+              <span class="contact-box-title">
+                <span class="brand-dot"></span>
+                Direct Message
+              </span>
+              <span class="contact-box-sub">Encrypted &amp; Direct</span>
+            </div>
+
+            <!-- Black Card Form -->
+            <form class="contact-black-form" id="contactForm">
+              <div class="form-group-dark">
+                <label class="form-label-dark" for="contactName">Your Name</label>
+                <input type="text" id="contactName" class="input-field-dark" placeholder="Mohan Prasad" required />
+              </div>
+              <div class="form-group-dark">
+                <label class="form-label-dark" for="contactEmail">Your Email</label>
+                <input type="email" id="contactEmail" class="input-field-dark" placeholder="mohan@example.com" required />
+              </div>
+              <div class="form-group-dark">
+                <label class="form-label-dark" for="contactMessage">Your Message</label>
+                <textarea id="contactMessage" class="input-field-dark" placeholder="Tell me about your project, idea, or role..." required></textarea>
+              </div>
+              <button type="submit" class="submit-btn-black">
+                <span>Send Message</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       7. FOOTER — Ultra Minimalist, Professional (Symbol-Only Links)
+       ================================================================ -->
+  <footer class="site-footer">
+    <div class="footer-card">
+      <div class="footer-top-row">
+        <span class="footer-status-pill">
+          <span class="brand-dot"></span>
+          AVAILABLE FOR OPPORTUNITIES · <span id="footerYear">2026</span>
+        </span>
+        <button class="footer-back-to-top" id="backToTopBtn" type="button" aria-label="Back to top">
+          <span>Back to top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+        </button>
+      </div>
+
+      <div class="footer-center-content">
+        <h2 class="manifesto-text">BUILDING SYSTEMS<br/>WITH PURPOSE.</h2>
+
+        <!-- Minimalist Symbols / Icons Row (Only symbols, clean & professional) -->
+        <div class="footer-symbols-row">
+          <!-- Email Symbol -->
+          <a href="mailto:mohanprasad05sarala@gmail.com" class="footer-symbol-btn" aria-label="Email Mohan Prasad" title="Email: mohanprasad05sarala@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+
+          <!-- WhatsApp / Call Symbol -->
+          <a href="https://wa.me/917200046657" target="_blank" rel="noopener" class="footer-symbol-btn" aria-label="WhatsApp or Call" title="WhatsApp / Call">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+
+          <!-- LinkedIn Symbol -->
+          <a href="https://www.linkedin.com/in/mohan-prasad-n-770154320" target="_blank" rel="noopener" class="footer-symbol-btn" aria-label="LinkedIn" title="LinkedIn Profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+
+          <!-- GitHub Symbol -->
+          <a href="https://github.com/M0han05" target="_blank" rel="noopener" class="footer-symbol-btn" aria-label="GitHub" title="GitHub Profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+
+          <!-- Curriculum Vitae Modal Trigger -->
+          <button type="button" class="footer-symbol-btn js-open-resume" id="footerResumeBtn" aria-label="Curriculum Vitae" title="Curriculum Vitae">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="footerCopyYear">2026</span> Mohan Prasad N. Designed &amp; engineered with precision.</span>
+        <span class="footer-bottom-badge">Salem &amp; Chennai · 4th Year B.E. CSE</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Resume Preview Modal -->
+  <div class="resume-modal-overlay" id="resumeModal">
+    <div class="resume-modal">
+      <div class="resume-modal-header">
+        <span class="resume-modal-title">Curriculum Vitae — Mohan Prasad N</span>
+        <div class="resume-modal-actions">
+          <a href="assets/docs/mohan-prasad-resume.pdf" download class="resume-download-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PDF
+          </a>
+          <button class="resume-close-btn" id="resumeCloseBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="resume-modal-body">
+        <iframe src="assets/docs/mohan-prasad-resume.pdf#toolbar=0" title="Curriculum Vitae Preview"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
