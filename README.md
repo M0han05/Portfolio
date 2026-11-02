@@ -1,8 +1,5 @@
 # Mohan Prasad N — Software Engineer Portfolio
 
-> Built to mirror the editorial layout and interactions of [Majd's Framer Portfolio](https://majd-portfolio.framer.website/).  
-> Clean HTML5, CSS3, and vanilla JavaScript with zero third-party framework overhead.
-
 ---
 
 ## 🌟 Key Interaction Features
